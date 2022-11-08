@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../../logo.png'
 const Footer = () => {
     return (
         <div>
@@ -18,12 +18,12 @@ const Footer = () => {
 
                 <div class="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
                     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-                        <div>
+                        <div className='text-center'>
                             <p class="font-medium">
                                 <span class="text-xs uppercase tracking-widest"> Call For Hire </span>
 
                                 <Link class="block text-2xl hover:opacity-75 sm:text-3xl" href="">
-                                    0123456789
+                                    +880 1719551726
                                 </Link>
                             </p>
 
@@ -32,7 +32,7 @@ const Footer = () => {
                                 <li>Weekend: 10am - 3pm</li>
                             </ul>
 
-                            <div class="mt-16 flex gap-3">
+                            <div class="mt-16 flex justify-center gap-3">
                                 <Link
                                     class="rounded-full border border-white/25 p-2 hover:opacity-75"
                                     href=""
@@ -144,12 +144,12 @@ const Footer = () => {
                         </div>
 
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <div>
+                            <div className=' text-center'>
                                 <p class="font-medium">Support</p>
 
                                 <nav
                                     aria-label="Footer Nav"
-                                    class="mt-4 flex flex-col space-y-2 text-sm text-gray-300"
+                                    class="mt-4 flex flex-col space-y-2 text-sm text-base-100"
                                 >
                                     <Link class="hover:opacity-75" href=""> Contact </Link>
                                     <Link class="hover:opacity-75" href=""> FAQs </Link>
@@ -159,38 +159,25 @@ const Footer = () => {
                             </div>
 
                             <div>
-                                <p class="font-medium">Products</p>
-
-                                <nav class="mt-4 flex flex-col space-y-2 text-sm text-gray-300">
-                                    <Link class="hover:opacity-75" href=""> 1to1 Coaching </Link>
-                                    <Link class="hover:opacity-75" href=""> Lesson Plans </Link>
-                                    <Link class="hover:opacity-75" href=""> Meal Plans </Link>
-                                    <Link class="hover:opacity-75" href=""> Gym Sessions </Link>
-                                </nav>
+                                <img src={logo} alt="" className='w-36 mx-auto' />
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-12 border-t border-gray-800 pt-12">
+                    <div class="mt-12 border-t border-base-content pt-12">
                         <div
-                            class="text-sm text-gray-300 sm:flex sm:items-center sm:justify-between"
+                            class="text-sm text-base-200 sm:flex sm:items-center sm:justify-between"
                         >
                             <div class="flex gap-3">
                                 <Link class="hover:opacity-75" href=""> Privacy Policy </Link>
                                 <Link class="hover:opacity-75" href=""> Terms & Conditions </Link>
-                                <Link class="hover:opacity-75" href=""> Returns Policy </Link>
                             </div>
 
                             <p class="mt-4 sm:mt-0">&copy; 2022 Company Name.</p>
                         </div>
 
-                        <p class="mt-8 text-xs text-gray-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-                            mollitia quia quod repellendus. Porro harum, odio dolore perspiciatis
-                            praesentium provident esse consequatur quibusdam aperiam, cupiditate
-                            omnis modi in quasi? In, maxime odio vel repellat sed earum? Debitis
-                            quaerat facilis animi. Odio natus nostrum laboriosam impedit magnam
-                            praesentium asperiores consectetur ipsum.
+                        <p class="mt-8 text-xs text-base-300">
+                            Photography is the art of capturing light with a camera, usually via a digital sensor or film, to create an image. With the right camera equipment, you can even photograph wavelengths of light invisible to the human eye, including UV, infrared, and radio.
                         </p>
                     </div>
                 </div>
