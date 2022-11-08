@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
-import { PhotoView } from 'react-photo-view';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import Details from './Details';
 import MyReview from './MyReview';
 import ReviewCard from './ReviewCard';
@@ -12,7 +9,9 @@ const ServiceDetails = () => {
     return (
         <div className='container mx-auto'>
             <div>
+                {/* Service Details */}
                 <Details />
+
                 {/* Service Reviews Section */}
                 <h1 className='text-5xl font-bold text-info text-center mt-14'>Service Reviews</h1>
 
