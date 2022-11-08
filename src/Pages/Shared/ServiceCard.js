@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { PhotoView } from 'react-photo-view';
+import { Link } from 'react-router-dom'
 
 const ServiceCard = () => {
     const rating = Math.round(2.7);
@@ -22,7 +23,8 @@ const ServiceCard = () => {
                             }</small>
                         </div>
                     </div>
-                    <button className="btn btn-secondary w-full text-base-100">View Details</button>
+
+                    <Link to={'/services/idfjdfljdfl'} className="btn btn-secondary w-full text-base-100">View Details</Link>
                 </div>
             </div>
         </div>
