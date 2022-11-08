@@ -12,7 +12,7 @@ const ReviewCard = () => {
                             <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
                         </div>
                         <div>
-                            <h4 className="font-bold">Leroy Jenkins</h4>
+                            <h4 className="font-bold text-white">Leroy Jenkins</h4>
                             <span className="text-xs dark:text-gray-400">2 days ago</span>
                         </div>
                     </div>

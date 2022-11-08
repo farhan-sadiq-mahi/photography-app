@@ -61,7 +61,7 @@ const SignUp = () => {
         <div className="bg-grey-lighter min-h-screen flex flex-col my-5">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <form onSubmit={handleSubmit} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+                    <h1 className="mb-8 text-4xl font-bold text-secondary text-center">Sign up</h1>
                     <input
                         type="text"
                         className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -87,7 +87,7 @@ const SignUp = () => {
 
                     <button
                         type="submit"
-                        className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-700 focus:outline-none my-1"
+                        className="w-full text-center py-3 rounded bg-secondary text-white hover:bg-secondary-focus focus:outline-none my-1"
                     >Create Account</button>
 
                     <p className="text-error mt-3">{error}</p>
