@@ -173,7 +173,7 @@ const Footer = () => {
                                 <Link className="hover:opacity-75" href=""> Terms & Conditions </Link>
                             </div>
 
-                            <p className="mt-4 sm:mt-0">&copy; 2022 Company Name.</p>
+                            <p className="mt-4 sm:mt-0">&copy; 2022 Aerial Photography.</p>
                         </div>
 
                         <p className="mt-8 text-xs text-base-300">
