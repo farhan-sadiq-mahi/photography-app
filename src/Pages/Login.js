@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 
@@ -49,54 +50,59 @@ const Login = () => {
     }
 
     return (
-        <div className='my-5'>
-            <div className="bg-grey-lighter min-h-screen flex flex-col">
-                <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                    <form onSubmit={handleLogIn} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                        <h1 className="mb-8 text-4xl font-bold text-secondary text-center">Log In</h1>
+        <div>
+            <Helmet>
+                <title>Log In</title>
+            </Helmet>
+            <div className='my-5'>
+                <div className="bg-grey-lighter min-h-screen flex flex-col">
+                    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                        <form onSubmit={handleLogIn} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                            <h1 className="mb-8 text-4xl font-bold text-secondary text-center">Log In</h1>
 
-                        <input
-                            type="email"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
-                            name="email"
-                            placeholder="Email" />
+                            <input
+                                type="email"
+                                className="block border border-grey-light w-full p-3 rounded mb-4"
+                                name="email"
+                                placeholder="Email" />
 
-                        <input
-                            type="password"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
-                            name="password"
-                            placeholder="Password" />
-
-
-
-                        <button
-                            type="submit"
-                            className="w-full text-center py-3 rounded bg-secondary text-white hover:bg-secondary-focus focus:outline-none my-1"
-                        >Log In</button>
-                        <p className="text-error mt-3">{er}</p>
-                    </form>
-
-                    <div className='flex my-5'>
-                        <hr className="my-2 mx-auto w-40 h-1 bg-info-content rounded border-0 md:my-3 " /><h1 className='mx-2'>OR</h1><hr className="my-2 mx-auto w-40 h-1 bg-info-content rounded border-0 md:my-3" />
-                    </div>
-
-                    <button onClick={() => { handleSignInPop(googleProvider) }}
-                        className="w-full bg-transparent hover:bg-green-500 text-green-300 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
-                    > <FaGoogle className='inline mr-1 mb-1' /> Log In With Google</button>
-
-                    <button onClick={() => { handleSignInPop(githubProvider) }}
-                        className="w-full bg-transparent hover:bg-gray-500 text-gray-300 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded my-2"
-                    > <FaGithub className='inline mr-1 mb-1' /> Log In With Github</button>
-                    <button onClick={() => { handleSignInPop(facebookProvider) }}
-                        className="w-full bg-transparent hover:bg-blue-500 text-blue-300 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    > <FaFacebookF className='inline mr-1 mb-1' /> Log In With Facebook</button>
+                            <input
+                                type="password"
+                                className="block border border-grey-light w-full p-3 rounded mb-4"
+                                name="password"
+                                placeholder="Password" />
 
 
-                    <div className="text-grey-dark mt-6">
-                        Don't have an account?
-                        <Link className="no-underline border-b border-blue text-blue" to="../signup/">
-                            Sign Up
-                        </Link>.
+
+                            <button
+                                type="submit"
+                                className="w-full text-center py-3 rounded bg-secondary text-white hover:bg-secondary-focus focus:outline-none my-1"
+                            >Log In</button>
+                            <p className="text-error mt-3">{er}</p>
+                        </form>
+
+                        <div className='flex my-5'>
+                            <hr className="my-2 mx-auto w-40 h-1 bg-info-content rounded border-0 md:my-3 " /><h1 className='mx-2'>OR</h1><hr className="my-2 mx-auto w-40 h-1 bg-info-content rounded border-0 md:my-3" />
+                        </div>
+
+                        <button onClick={() => { handleSignInPop(googleProvider) }}
+                            className="w-full bg-transparent hover:bg-green-500 text-green-300 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
+                        > <FaGoogle className='inline mr-1 mb-1' /> Log In With Google</button>
+
+                        <button onClick={() => { handleSignInPop(githubProvider) }}
+                            className="w-full bg-transparent hover:bg-gray-500 text-gray-300 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded my-2"
+                        > <FaGithub className='inline mr-1 mb-1' /> Log In With Github</button>
+                        <button onClick={() => { handleSignInPop(facebookProvider) }}
+                            className="w-full bg-transparent hover:bg-blue-500 text-blue-300 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        > <FaFacebookF className='inline mr-1 mb-1' /> Log In With Facebook</button>
+
+
+                        <div className="text-grey-dark mt-6">
+                            Don't have an account?
+                            <Link className="no-underline border-b border-blue text-blue" to="../signup/">
+                                Sign Up
+                            </Link>.
+                        </div>
                     </div>
                 </div>
             </div>

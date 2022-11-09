@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { FaStar } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,90 +35,95 @@ const AddService = () => {
         e.preventDefault();
         const newService = { ...service };
         newService['rating'] = currentValue;
+        newService['dateTime'] = new Date();
         console.log(newService);
-        // console.log(service);
 
+        fetch('http://localhost:5000/addservice', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newService)
+        })
+            .then(res => res.json())
+            .then(data => {
+                e.target.reset();
+                // toast
+                toast.success('🦄 Service added successfully', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
 
-
-
-        // toast 
-
-        toast.success('🦄 Service added successfully', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        });
-
-        // fetch('', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(service)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         e.target.reset();
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 
     return (
-        <div className='min-h-screen flex flex-col my-5 text-center'>
-            <div className="container max-w-md mx-auto flex-1 flex flex-col items-center px-2">
+        <div>
+            <Helmet>
+                <title>Add Services</title>
+            </Helmet>
+            <div className='min-h-screen flex flex-col my-5 text-center'>
+                <div className="container max-w-md mx-auto flex-1 flex flex-col items-center px-2">
 
-                <form onSubmit={handleSubmit} className="bg-primary text-secondary-content px-6 py-8 rounded shadow-md w-full">
-                    <h1 className="mb-8 text-3xl text-center font-bold">Add Service</h1>
+                    <form onSubmit={handleSubmit} className="bg-primary text-secondary-content px-6 py-8 rounded shadow-md w-full">
+                        <h1 className="mb-8 text-3xl text-center font-bold">Add Service</h1>
 
-                    <input onChange={handleInputChange}
-                        type="text"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
-                        name="name"
-                        placeholder="Name" />
-                    <input onChange={handleInputChange}
-                        type="text"
-                        className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
-                        name="price"
-                        placeholder="price" />
-                    <textarea onChange={handleInputChange}
-                        type="text"
-                        rows='5'
-                        cols='500'
-                        className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
-                        name="description"
-                        placeholder="Description" />
+                        <input onChange={handleInputChange}
+                            type="text"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
+                            name="name"
+                            placeholder="Name" />
+                        <input onChange={handleInputChange}
+                            type="text"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
+                            name="price"
+                            placeholder="price" />
+                        <input onChange={handleInputChange}
+                            type="text"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
+                            name="Img"
+                            placeholder="Photo URL" />
+                        <textarea onChange={handleInputChange}
+                            type="text"
+                            rows='5'
+                            cols='500'
+                            className="block border border-grey-light w-full p-3 rounded mb-4 text-primary-focus font-semibold"
+                            name="description"
+                            placeholder="Description" />
 
-                    <div className="flex justify-center font-bold gap-5">
+                        <div className="flex justify-center font-bold gap-5">
 
-                        {
-                            [...Array(5)].map((e, index) => <FaStar className='text-red-400'
-                                key={index}
-                                size={28}
-                                onClick={() => handleClick(index + 1)}
-                                onMouseOver={() => handleMouseOver(index + 1)}
-                                onMouseLeave={() => handleMouseLeave}
-                                color={(hoverValue || currentValue) > index ? "#FFBA5A" : "#a9a9a9"}
+                            {
+                                [...Array(5)].map((e, index) => <FaStar className='text-red-400'
+                                    key={index}
+                                    size={28}
+                                    onClick={() => handleClick(index + 1)}
+                                    onMouseOver={() => handleMouseOver(index + 1)}
+                                    onMouseLeave={() => handleMouseLeave}
+                                    color={(hoverValue || currentValue) > index ? "#FFBA5A" : "#a9a9a9"}
 
-                            />)
-                        }
+                                />)
+                            }
 
-                    </div>
+                        </div>
 
 
-                    <button
-                        type="submit"
-                        className="w-full text-center py-3 rounded bg-primary-content text-primary font-bold hover:bg-secondary-content focus:outline-none my-3"
-                    >Add This Service</button>
-                </form>
+                        <button
+                            type="submit"
+                            className="w-full text-center py-3 rounded bg-primary-content text-primary font-bold hover:bg-secondary-content focus:outline-none my-3"
+                        >Add This Service</button>
+                    </form>
+                </div>
             </div>
         </div>
     );
