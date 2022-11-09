@@ -21,7 +21,7 @@ const Login = () => {
     const handleSignInPop = (provider) => {
         signInPop(provider)
             .then(res => {
-                const userData = res.user;
+                // const userData = res.user;
                 navigate(from, { replace: true })
             })
             .catch(error => console.error(error))

@@ -8,12 +8,12 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-
     const navigation = [
         { name: 'Home', href: '/', current: false },
         { name: 'Services', href: '/services', current: false },
-        { name: 'Add Service', href: '/addService', current: false },
-        { name: 'Blog', href: '/blog', current: false },
+        user ? { name: 'Add Service', href: '/addservice', current: false } : {},
+        user ? { name: 'My Reviews', href: '/myreviews', current: false } : {},
+
     ]
 
     function classNames(...classes) {
@@ -47,7 +47,7 @@ const Navbar = () => {
                                         className="hidden h-10 w-auto lg:block"
                                         src={logo}
                                         alt="Your Company"
-                                    /><h1 className='font-bold text-base-100'>ElearninG</h1>
+                                    /><h1 className='font-bold text-base-100'>Aerial</h1>
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">

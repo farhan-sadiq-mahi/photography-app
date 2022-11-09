@@ -39,7 +39,6 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(userData => {
-                const user = userData.user;
                 handleUserUpdate(fullName, photoURL);
                 form.reset();
                 navigate(from, { replace: true })
