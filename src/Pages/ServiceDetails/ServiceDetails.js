@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useParams } from 'react-router-dom';
 import Details from './Details';
 import MyReview from './MyReview';
 import ReviewCard from './ReviewCard';
 
 
 const ServiceDetails = () => {
+    const { id } = useParams();
+    const [service, setService] = useState({});
+    useEffect(() => {
+        fetch(`http://localhost:5000/service/${id}`)
+            .then(res => res.json())
+            .then(data => setService(data.data))
+            .catch(error => console.log(error));
+    }, [id])
+
 
     return (
         <div>
@@ -15,7 +25,7 @@ const ServiceDetails = () => {
             <div className='container mx-auto'>
                 <div>
                     {/* Service Details */}
-                    <Details />
+                    <Details data={service} />
 
                     {/* Service Reviews Section */}
                     <h1 className='text-5xl font-bold text-info text-center mt-14'>Service Reviews</h1>
@@ -33,7 +43,7 @@ const ServiceDetails = () => {
                         </div>
 
                         {/* my review  */}
-                        <MyReview />
+                        <MyReview data={service} />
 
                     </div>
                 </div>
