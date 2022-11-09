@@ -35,8 +35,6 @@ const Login = () => {
 
         logIn(email, password)
             .then(userData => {
-                const user = userData.user;
-                console.log(user);
                 form.reset();
                 navigate(from, { replace: true })
 

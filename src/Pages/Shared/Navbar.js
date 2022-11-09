@@ -11,6 +11,7 @@ const Navbar = () => {
     const navigation = [
         { name: 'Home', href: '/', current: false },
         { name: 'Services', href: '/services', current: false },
+        { name: 'Blog', href: '/blog', current: false },
         user ? { name: 'Add Service', href: '/addservice', current: false } : {},
         user ? { name: 'My Reviews', href: '/myreviews', current: false } : {},
 

@@ -1,9 +1,11 @@
 import AddService from "../Pages/AddService/AddService";
+import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Login";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import SignUp from "../Pages/SignUp";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layout/Main");
@@ -23,16 +25,20 @@ const router = createBrowserRouter([
                 element: <Services />
             },
             {
+                path: '/blog',
+                element: <Blog />
+            },
+            {
                 path: '/services/:id',
                 element: <ServiceDetails />
             },
             {
                 path: '/myreviews',
-                element: <MyReviews />
+                element: <PrivetRoute><MyReviews /></PrivetRoute>
             },
             {
                 path: '/addservice',
-                element: <AddService />
+                element: <PrivetRoute><AddService /></PrivetRoute>
             },
             {
                 path: '/login',
