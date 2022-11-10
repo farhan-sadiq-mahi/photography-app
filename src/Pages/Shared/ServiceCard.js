@@ -11,8 +11,6 @@ const ServiceCard = ({ data }) => {
                 <div className="card-body">
                     <h2 className="card-title">{data.name}</h2>
                     <p>{data.description.slice(0, 100)}...</p>
-
-                    {/* slice the discription to 100 caracter for the card */}
                     <div className="mb-1">
                         <div className='flex justify-between'>
                             <small className='text-lg font-bold'><span className='font-semibold'>Price:</span> ${data.price}</small>

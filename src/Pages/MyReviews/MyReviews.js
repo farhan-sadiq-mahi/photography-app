@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
 const MyReviews = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const [myReviews, setMyReviews] = useState([]);
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/delete/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(er => console.error(er));
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/myreviews?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOut();
+                }
+                return res.json()
+            })
+            .then(data => {
+                setMyReviews(data.data);
+            })
+    }, [user.email, handleDelete])
+
+
+
+
+
     return (
         <div>
             <Helmet>
@@ -27,7 +60,7 @@ const MyReviews = () => {
 
                         <tbody>
                             {
-                                [...Array(5)].map((e, i) => <ReviewRow key={i} />)
+                                myReviews.map(review => <ReviewRow key={review._id} data={review} handleDelete={handleDelete} />)
                             }
                         </tbody>
 
@@ -36,10 +69,10 @@ const MyReviews = () => {
                         {/* <!-- foot --> */}
                         <tfoot>
                             <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
+                                <th>Service Name</th>
+                                <th>Review</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                                 <th></th>
                             </tr>
                         </tfoot>

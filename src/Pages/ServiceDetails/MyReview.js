@@ -37,32 +37,32 @@ const MyReview = ({ data }) => {
         reviewer['serviceId'] = data._id;
         console.log(reviewer);
 
-        // fetch('http://localhost:5000/', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(reviewer)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         e.target.reset();
-        //         // toast
-        //         toast.success('🦄 Review added successfully', {
-        //             position: "top-center",
-        //             autoClose: 5000,
-        //             hideProgressBar: false,
-        //             closeOnClick: true,
-        //             pauseOnHover: true,
-        //             draggable: true,
-        //             progress: undefined,
-        //             theme: "dark",
-        //         });
+        fetch('http://localhost:5000/addreview', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviewer)
+        })
+            .then(res => res.json())
+            .then(data => {
+                e.target.reset();
+                // toast
+                toast.success('🦄 Review added successfully', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
 
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     return (
@@ -72,7 +72,7 @@ const MyReview = ({ data }) => {
                 <div className="flex flex-col items-center w-full">
                     <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
 
-                    {/* before login */}
+
                     {!user?.uid ?
                         <div>
                             <h1 className='text-xl text-center mt-3'>Please Login to Share Review</h1>

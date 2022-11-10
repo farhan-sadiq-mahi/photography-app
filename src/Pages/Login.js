@@ -17,12 +17,32 @@ const Login = () => {
     const [er, setEr] = useState(null);
 
 
-
+    const jwtToken = currentUser => {
+        console.log(currentUser)
+        fetch('http://localhost:5000/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                localStorage.setItem('jwt-token', data.token)
+            })
+            .catch(er => console.error(er))
+    }
 
     const handleSignInPop = (provider) => {
         signInPop(provider)
             .then(res => {
-                // const userData = res.user;
+                const user = res.user;
+                const currentUser = {
+                    email: user.email
+                }
+                //get jwt token
+                jwtToken(currentUser);
                 navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
@@ -36,9 +56,28 @@ const Login = () => {
 
         logIn(email, password)
             .then(userData => {
+                const user = userData.user;
+                const currentUser = {
+                    email: user.email
+                }
+
+                //get jwt token
+
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('jwt-token', data.token)
+                    })
+                    .catch(er => console.error(er))
+
                 form.reset();
                 navigate(from, { replace: true })
-
             })
             .catch(error => {
                 console.error(error)

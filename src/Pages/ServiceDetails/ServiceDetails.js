@@ -9,12 +9,27 @@ import ReviewCard from './ReviewCard';
 const ServiceDetails = () => {
     const { id } = useParams();
     const [service, setService] = useState({});
+    const [reviews, setReviews] = useState([]);
+
+
     useEffect(() => {
         fetch(`http://localhost:5000/service/${id}`)
             .then(res => res.json())
             .then(data => setService(data.data))
             .catch(error => console.log(error));
     }, [id])
+
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/review/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setReviews(data.data)
+            })
+            .catch(error => console.log(error));
+    }, [id])
+
 
 
     return (
@@ -34,12 +49,10 @@ const ServiceDetails = () => {
 
                         {/* review Part  */}
                         <div className='col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4'>
-                            <ReviewCard />
-                            <ReviewCard />
-                            <ReviewCard />
-                            <ReviewCard />
-                            <ReviewCard />
-                            <ReviewCard />
+
+                            {
+                                reviews.map(review => <ReviewCard key={review._id} data={review} />)
+                            }
                         </div>
 
                         {/* my review  */}

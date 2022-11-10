@@ -37,10 +37,32 @@ const SignUp = () => {
             setError('Your password is not long enough')
             return
         }
-
+        const jwtToken = currentUser => {
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('jwt-token', data.token)
+                })
+                .catch(er => console.error(er))
+        }
         createUser(email, password)
             .then(userData => {
                 handleUserUpdate(fullName, photoURL);
+                const user = userData.user;
+                const currentUser = {
+                    email: user.email
+                }
+
+                //get jwt token
+
+                jwtToken(createUser)
+
                 form.reset();
                 navigate(from, { replace: true })
 
