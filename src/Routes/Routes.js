@@ -5,6 +5,7 @@ import MyReviews from "../Pages/MyReviews/MyReviews";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import SignUp from "../Pages/SignUp";
+import Update from "../Pages/Update.js/Update";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
             {
                 path: '/myreviews',
                 element: <PrivetRoute><MyReviews /></PrivetRoute>
+            },
+            {
+                path: '/myreviews/update/:id',
+                element: <PrivetRoute><Update /></PrivetRoute>,
+                loader: async ({ params }) => fetch(`http://localhost:5000/updatereview/${params.id}`)
             },
             {
                 path: '/addservice',

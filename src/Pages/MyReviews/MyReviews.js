@@ -43,42 +43,45 @@ const MyReviews = () => {
             </Helmet>
             <div className='container mx-auto'>
                 <h1 className='text-5xl font-bold text-secondary-focus text-center my-12'>My Reviews</h1>
-                <h1 className='text-xl font-bold text-secondary-focus text-center my-12'>No reviews added</h1>
-                <div className="overflow-x-auto w-full">
-                    <table className="table w-full z-0">
-                        {/* <!-- head --> */}
-                        <thead>
-                            <tr>
-                                <th>Service Name</th>
-                                <th>Review</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
+                {
+                    myReviews == 0 ? <h1 className='text-xl font-bold text-secondary-focus text-center my-12'>No reviews added</h1>
+                        :
+                        <div className="overflow-x-auto w-full">
+                            <table className="table w-full z-0">
+                                {/* <!-- head --> */}
+                                <thead>
+                                    <tr>
+                                        <th>Service Name</th>
+                                        <th>Review</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
 
 
 
-                        <tbody>
-                            {
-                                myReviews.map(review => <ReviewRow key={review._id} data={review} handleDelete={handleDelete} />)
-                            }
-                        </tbody>
+                                <tbody>
+                                    {
+                                        myReviews.map(review => <ReviewRow key={review._id} data={review} handleDelete={handleDelete} />)
+                                    }
+                                </tbody>
 
 
 
-                        {/* <!-- foot --> */}
-                        <tfoot>
-                            <tr>
-                                <th>Service Name</th>
-                                <th>Review</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
+                                {/* <!-- foot --> */}
+                                <tfoot>
+                                    <tr>
+                                        <th>Service Name</th>
+                                        <th>Review</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
 
-                    </table>
-                </div>
+                            </table>
+                        </div>
+                }
             </div>
         </div>
     );

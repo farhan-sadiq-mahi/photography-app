@@ -1,12 +1,16 @@
 import React from 'react';
 import { FaEdit, FaStar } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
+
 const ReviewRow = ({ data, handleDelete }) => {
 
-    const handleDeleteFunction = (id) => {
 
+    const handleDeleteFunction = (id) => {
         const confirmation = window.confirm('Are you sure want to delete ?')
         console.log(confirmation);
         if (confirmation) {
@@ -36,9 +40,9 @@ const ReviewRow = ({ data, handleDelete }) => {
                     </div>
                 </div>
             </td>
-            <td className='w-48'>{data.review.slice(0, 50)}...
+            <td className='w-48'>{data?.review ? data.review.slice(0, 50) : ''}...
             </td>
-            <td className='text-xl text-secondary'><button><FaEdit /> </button></td>
+            <td className='text-xl text-secondary'><button><Link to={`update/${data._id}`}><FaEdit /></Link> </button></td>
             <th className='text-xl text-secondary'>
                 <button onClick={() => handleDeleteFunction(data._id)}><MdDelete /> </button>
             </th>
