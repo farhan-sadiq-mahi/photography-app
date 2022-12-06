@@ -1,4 +1,4 @@
-### Photography Review Webdite
+### Photography Review Website
 
 ## Welcome to my Photography site repo
 ## Live site Link 
