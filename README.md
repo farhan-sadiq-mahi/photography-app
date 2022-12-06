@@ -1,7 +1,7 @@
 ### Photography Review Webdite
 
 ## Welcome to my Photography site repo
-##Live site Link 
+## Live site Link 
 #### `https://all-time-photography.web.app/`
 
 Features and Functionality :
@@ -30,4 +30,4 @@ Features and Functionality :
 * React Icon
 * React Headless UI
 
-###Thanks For Visiting
+### Thanks For Visiting
