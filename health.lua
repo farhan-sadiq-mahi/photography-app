@@ -5,7 +5,7 @@ local function createHealthText(player)
     billboardGui.Name = "HealthGui"
     billboardGui.Adornee = humanoid.RootPart
     billboardGui.Size = UDim2.new(1, 0, 1, 0)
-    billboardGui.StudsOffset = Vector3.new(0, -1.5, 0) -- Adjust the Y offset to move the text up or down
+    billboardGui.StudsOffset = Vector3.new(0, -4, 0) -- Adjust the Y offset to move the text up or down
     billboardGui.AlwaysOnTop = true
     billboardGui.Parent = humanoid.RootPart
 
