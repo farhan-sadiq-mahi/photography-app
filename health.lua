@@ -5,7 +5,7 @@ local function createHealthText(player)
     billboardGui.Name = "HealthGui"
     billboardGui.Adornee = humanoid.RootPart
     billboardGui.Size = UDim2.new(1, 0, 1, 0)
-    billboardGui.StudsOffset = Vector3.new(0, -4, 0) -- Adjust the Y offset to move the text up or down
+    billboardGui.StudsOffset = Vector3.new(0, -1.5, 0) -- Adjust the Y offset to move the text up or down
     billboardGui.AlwaysOnTop = true
     billboardGui.Parent = humanoid.RootPart
 
@@ -24,13 +24,27 @@ local function createHealthText(player)
     healthText.Text = "HP: "..math.floor(humanoid.Health)
     healthText.Font = Enum.Font.SourceSansBold
     healthText.TextSize = 14 -- Adjust the text size as desired
-    healthText.TextColor3 = Color3.fromRGB(0, 229, 146) -- #00E592
+    healthText.TextColor3 = Color3.fromRGB(0, 229, 146) -- Default color: #00E592
     healthText.TextStrokeTransparency = 0.3
     healthText.TextStrokeColor3 = Color3.new(0, 0, 0)
     healthText.Parent = frame
 
     local function updateHealthText()
-        healthText.Text = "HP: "..math.floor(humanoid.Health)
+        local health = humanoid.Health
+        healthText.Text = "HP: "..math.floor(health)
+
+        if health < 30 then
+            healthText.TextColor3 = Color3.fromRGB(255, 165, 0) -- Orange color
+        else
+            healthText.TextColor3 = Color3.fromRGB(0, 229, 146) -- Default color: #00E592
+        end
+
+        if health < 20 then
+            healthText.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red color
+            healthText.TextTransparency = 0.5 * math.abs(math.sin(tick() * 10)) -- Blinking effect
+        else
+            healthText.TextTransparency = 0 -- Reset transparency
+        end
     end
 
     humanoid.Died:Connect(function()
