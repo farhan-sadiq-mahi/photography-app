@@ -1,9 +1,9 @@
 -- Constants
-local TEXT = "EDITED BY FOCH"
+local TEXT = "Foch Angry"
 local TEXT_SIZE = 90
 local TYPING_SPEED = 0.05 -- Delay between each character typing animation (in seconds)
 local CLEARING_SPEED = 0.02 -- Delay between each character clearing animation (in seconds)
-local TEXT_COLOR = Color3.fromRGB(0, 229, 146) -- #00E592
+local TEXT_COLOR = Color3.fromRGB(229, 0, 0) -- #00E592
 local STROKE_COLOR = Color3.new(0, 0, 0)
 local STROKE_TRANSPARENCY = 0.5
 local BACKGROUND_TRANSPARENCY = 0.6
