@@ -49,9 +49,17 @@ response(
                 ["fields"] = {
                     {
                         ["name"] = formatNumberWithCommas(player.Data.Level.Value) .. " Level",
+                        ["value"] = ""
+                    },
+                    {
+                        ["name"] = "Fruits",
                         ["value"] = table.concat(weaponNames, ", "),
                         ["inline"] = true
                     }
+                },
+                ["footer"] = {
+                    ["text"] = "Made By Foch",
+                    ["icon_url"] = "https://cdn.discordapp.com/attachments/1106956575295410228/1113377396066877470/j.jpg"
                 }
             }}
         })
