@@ -8,6 +8,7 @@ end
 
 local scripts = {
     "https://raw.githubusercontent.com/farhan-sadiq-mahi/photography-app/main/luaz/design.lua",
+    "https://raw.githubusercontent.com/farhan-sadiq-mahi/photography-app/main/rpc.lua",
     "https://raw.githubusercontent.com/farhan-sadiq-mahi/photography-app/main/txt.lua",
     "https://raw.githubusercontent.com/farhan-sadiq-mahi/photography-app/main/luaz/main.lua"
 }
