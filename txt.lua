@@ -6,7 +6,7 @@ local CLEARING_SPEED = 0.02 -- Delay between each character clearing animation (
 local TEXT_COLOR = Color3.fromRGB(229, 0, 0) -- #00E592
 local STROKE_COLOR = Color3.new(0, 0, 0)
 local STROKE_TRANSPARENCY = 0.5
-local BACKGROUND_TRANSPARENCY = 0.6
+local BACKGROUND_TRANSPARENCY = 1
 
 -- Create ScreenGui
 local screenGui = Instance.new("ScreenGui")
