@@ -6,7 +6,7 @@ local CLEARING_SPEED = 0.02 -- Delay between each character clearing animation (
 local TEXT_COLOR = Color3.fromRGB(229, 0, 0) -- #00E592
 local STROKE_COLOR = Color3.new(0, 0, 0)
 local STROKE_TRANSPARENCY = 0.5
-local BACKGROUND_TRANSPARENCY = 1
+local BACKGROUND_TRANSPARENCY = 0.1
 
 -- Create ScreenGui
 local screenGui = Instance.new("ScreenGui")
@@ -33,6 +33,8 @@ textLabel.Font = Enum.Font.GothamSemibold -- Change the font to a gaming-style f
 textLabel.TextStrokeTransparency = STROKE_TRANSPARENCY
 textLabel.TextStrokeColor3 = STROKE_COLOR
 textLabel.Parent = backgroundFrame
+
+
 
 -- Calculate the center of the screen
 local screenWidth = game:GetService("GuiService"):GetScreenResolution().X
