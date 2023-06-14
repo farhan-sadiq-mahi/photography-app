@@ -15,7 +15,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     local elapsedTime = tick() - startTime
     
     -- Delay before color animation
-    if elapsedTime <= delayDuration thenn
+    if elapsedTime <= delayDuration then
         return -- Skip the color animation while in the delay period
     end
     
