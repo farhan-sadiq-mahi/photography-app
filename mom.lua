@@ -14,7 +14,11 @@ local scripts = {
 }
 
 if not _G[StorageKey] then
-    for _, scriptUrl in ipairs(scripts) do
+    for i, scriptUrl in ipairs(scripts) do
+        if i == 2 then
+            wait(6) -- Delay for 6 seconds before loading the second script
+        end
+
         coroutine.wrap(function()
             executeScript(scriptUrl)
         end)()
