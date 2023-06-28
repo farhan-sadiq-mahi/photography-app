@@ -1,5 +1,5 @@
 -- Constants
-local TEXT = "Foch Angry"
+local TEXT = "Siam Gay"
 local TEXT_SIZE = 90
 local TYPING_SPEED = 0.05 -- Delay between each character typing animation (in seconds)
 local CLEARING_SPEED = 0.02 -- Delay between each character clearing animation (in seconds)
