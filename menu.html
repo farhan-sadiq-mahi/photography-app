@@ -1,0 +1,205 @@
+<style>
+
+.dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 20px;
+    background: rgb(52 52 52);
+    border: 6px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 999999;
+}
+
+.dialog * {
+  color: #fff;
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.close:before, .close:after {
+  content: ' ';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 20%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background: #fff;
+}
+
+.close:after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.5em;
+  background: red;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: scale(0.8);
+}
+
+.msg {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  font-weight: bolder;
+  padding: 15px;
+  animation: msg 0.5s forwards, msg 0.5s reverse forwards 3s;
+  z-index: 999999;
+  pointer-events: none;
+}
+
+@keyframes msg {
+  from {
+    transform: translate(-120%, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+</style>
+<div class="msg" style="display: none;"></div>
+<div id="dialogex" class="dialog" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: move;">
+  ${shouldShowAd ? `<big>Loading ad...</big>` : `
+  <div class="close" onclick="this.parentNode.style.display='none';"></div>
+  <big class="Hola" style="position: relative; display: inline-block; text-decoration: underline; animation: backInDown 1s;">
+    <span style="position: absolute; top: -60px; left: 0; width: 100%; height: 100%; background-image: url('https://raw.githubusercontent.com/farhan-sadiq-mahi/photography-app/main/93cb499b-6ff4-4e41-89a8-256fe4d581f2.gif'); background-size: cover; z-index: -1; animation: float 5s infinite;"></span>
+</big>
+
+<style>
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+</style>
+
+  <style>
+  .logo-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo {
+    max-width: 70%;
+    max-height: 80%;
+    margin-top: -40px;
+  }
+</style>
+
+<div class="logo-container">
+  <img class="logo" src="https://raw.githubusercontent.com/farhan-sadiq-mahi/photography-app/main/cooltext439501099197399.png" alt="Logo">
+</div>
+
+  <p id="espLine" style="display: flex; justify-content: center; align-items: center; margin: 0; color: lightgreen;" class="ESPline">N = ESP Line</p>
+  <p id="esp" style="display: flex; justify-content: center; align-items: center; margin: 0; color: lightgreen;" class="ESP">I = ESP</p>
+  <p id="toggleAimbot" style="display: flex; justify-content: center; align-items: center; margin: 0; color: red;" class="ToogleAimbot">L = Toogle Right Mouse Aimbot</p>
+  <p style="display: flex; justify-content: center; align-items: center; margin: 0;" class="ShowHide">K = Show / Hide</p>
+  <p id="aimbotText" style="display: flex; justify-content: center; align-items: center; margin: 0; color: lightgreen;" class="Aimbot">O = Aimbot</p>
+  <br>
+  <style>
+  @keyframes paperDisappear {
+    0% {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: translateY(0) rotate(0deg) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+  }
+
+  .statusEmoji {
+    animation: paperDisappear 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .statusContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #statusText, #versionText {
+    font-size: 12px;
+  }
+
+  #versionText {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="statusContainer">
+  <p id="statusText" style="margin: 0;" class="Status">
+    Status:
+    <span class="statusEmoji">🟢</span>
+    Safe
+  </p>
+  <p id="versionText" style="margin: 0;">V.1.0.0</p>
+</div>
+
+  `}
+</div>
+
+<script>
+  // JavaScript code for drag functionality
+  var dialogBox = document.querySelector('.dialog');
+  var isDragging = false;
+  var offset = { x: 0, y: 0 };
+
+  dialogBox.addEventListener('mousedown', startDragging);
+  dialogBox.addEventListener('mouseup', stopDragging);
+  dialogBox.addEventListener('mousemove', drag);
+
+  function startDragging(e) {
+    isDragging = true;
+    offset.x = e.clientX - dialogBox.getBoundingClientRect().left;
+    offset.y = e.clientY - dialogBox.getBoundingClientRect().top;
+    dialogBox.style.pointerEvents = 'none';
+  }
+
+  function stopDragging() {
+    isDragging = false;
+    dialogBox.style.pointerEvents = 'auto';
+  }
+
+  function drag(e) {
+    if (isDragging) {
+      dialogBox.style.left = (e.clientX - offset.x) + 'px';
+      dialogBox.style.top = (e.clientY - offset.y) + 'px';
+    }
+  }
+</script>
